@@ -1,0 +1,23 @@
+AI_content_Generator/
+|
+|--app.py
+|---requirement.txt
+|---.env
+|
+|-----vector_store/
+|         |--faiss_index.bin
+|         |---stored_texts.pkl
+|
+|-----utils
+|      |---embeddings.py
+|      |---vector_db.py
+|      |---groq_generator.py
+|
+|------templates/
+|       |---layout.html
+|       |---index.html
+|       |---history.html
+|
+|-----static/
+|     |---style.css
+|     |---script.js
