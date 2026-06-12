@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="history-container">
+    <!-- Header panel with statistics and actions -->
+    <div class="history-header">
+        <div>
+            <h1><i class="fa-solid fa-clock-rotate-left"></i> Content Archives</h1>
+            <p>Access and manage all past generations stored in your FAISS Vector Store</p>
+        </div>
+        <div class="history-actions">
+            <button class="btn btn-danger hidden" id="clear-all-btn">
+                <i class="fa-solid fa-trash-can"></i> Clear All History
+            </button>
+        </div>
+    </div>
+
+    <!-- Filters and Search panel -->
+    <div class="filter-panel card">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="Search by topic, keyword, or content...">
+        </div>
+        <div class="filter-options">
+            <span class="filter-label">Filter Type:</span>
+            <div class="filter-chips">
+                <button class="filter-chip active" data-type="all">All</button>
+                <button class="filter-chip" data-type="Blog Post"><i class="fa-solid fa-blog"></i> Blog</button>
+                <button class="filter-chip" data-type="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</button>
+                <button class="filter-chip" data-type="Instagram"><i class="fa-brands fa-instagram"></i> Instagram</button>
+                <button class="filter-chip" data-type="Twitter Thread"><i class="fa-brands fa-x-twitter"></i> Twitter/X</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Loading State -->
+    <div class="history-loading" id="history-loading">
+        <div class="spinner"></div>
+        <p>Loading your content library...</p>
+    </div>
+
+    <!-- History Empty State -->
+    <div class="empty-state hidden" id="history-empty">
+        <div class="magic-sphere">
+            <i class="fa-solid fa-folder-open"></i>
+        </div>
+        <h3>No history found</h3>
+        <p>You haven't generated any content yet. Head back to the creator page to start generating!</p>
+        <a href="/" class="btn btn-primary mt-3">Go to Creator</a>
+    </div>
+
+    <!-- History Grid -->
+    <div class="history-grid hidden" id="history-grid">
+        <!-- Dynamically populated card grid -->
+    </div>
+</div>
+
+<!-- Expand Modal (for full view of generated content) -->
+<div class="modal hidden" id="content-modal">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content card">
+        <div class="modal-header">
+            <div>
+                <span class="badge" id="modal-type">Blog Post</span>
+                <span class="badge badge-secondary" id="modal-tone">Professional</span>
+                <h2 id="modal-title">Topic Title</h2>
+                <small class="text-muted" id="modal-date"><i class="fa-solid fa-calendar-days"></i> Date</small>
+            </div>
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="markdown-body" id="modal-body-content"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="modal-copy-btn"><i class="fa-regular fa-copy"></i> Copy Content</button>
+            <button class="btn btn-secondary" id="modal-download-btn"><i class="fa-solid fa-download"></i> Download MD</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

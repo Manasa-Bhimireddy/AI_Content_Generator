@@ -1,0 +1,8 @@
+flask                  #for backend
+groq                     #llms
+python-dotenv    #to connect to llms
+faiss-cpu         #to run vectors in cpu
+sentence-transformers   #embeddings
+numpy      #numerical lib for vectors
+pickle-mixin    #to store a vector database
+requests     #request to call api

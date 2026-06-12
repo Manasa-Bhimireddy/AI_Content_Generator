@@ -1,0 +1,303 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="dashboard-grid">
+
+    <!-- Generator Form -->
+    <div class="card">
+
+        <h2>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            AI Content Creator
+        </h2>
+
+
+        <form id="generator-form">
+
+
+            <div class="form-group">
+
+                <label>Topic</label>
+
+                <input 
+                    type="text"
+                    id="topic"
+                    placeholder="Enter your topic..."
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Content Type</label>
+
+                <div class="type-chips">
+
+                    <label class="chip active">
+                        <input 
+                        type="radio"
+                        name="content_type"
+                        value="Blog Post"
+                        checked>
+                        Blog Post
+                    </label>
+
+
+                    <label class="chip">
+                        <input 
+                        type="radio"
+                        name="content_type"
+                        value="LinkedIn">
+                        LinkedIn
+                    </label>
+
+
+                    <label class="chip">
+                        <input 
+                        type="radio"
+                        name="content_type"
+                        value="Instagram">
+                        Instagram
+                    </label>
+
+
+                    <label class="chip">
+                        <input 
+                        type="radio"
+                        name="content_type"
+                        value="Twitter Thread">
+                        Twitter Thread
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+
+                <label>Tone</label>
+
+                <select id="tone">
+
+                    <option value="Professional">
+                        Professional
+                    </option>
+
+                    <option value="Friendly">
+                        Friendly
+                    </option>
+
+                    <option value="Creative">
+                        Creative
+                    </option>
+
+                    <option value="Funny">
+                        Funny
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+
+                <label>Keywords</label>
+
+                <textarea
+                id="keywords"
+                placeholder="AI, technology, future"></textarea>
+
+
+            </div>
+
+
+
+
+
+            <button 
+            type="submit"
+            class="btn btn-primary btn-generate"
+            id="generate-btn">
+
+                <span>Generate Content</span>
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Output -->
+
+    <div class="card output-body">
+
+
+
+        <!-- Empty state -->
+
+        <div id="empty-state" class="empty-state">
+
+
+            <h3>
+                No content generated yet
+            </h3>
+
+            <p>
+                Enter a topic and click generate
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+        <!-- Loading -->
+
+        <div id="loading-state" class="loading-state hidden">
+
+
+            <div class="spinner"></div>
+
+
+            <div class="loading-messages">
+
+                <p class="active">
+                    Writing content...
+                </p>
+
+                <p>
+                    Creating ideas...
+                </p>
+
+                <p>
+                    Finalizing...
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- Generated Content -->
+
+
+        <div id="content-viewer" class="content-viewer hidden">
+
+
+            <h3>
+                Generated Content
+            </h3>
+
+
+
+            <div
+            id="generated-text-content"
+            class="markdown-body">
+
+            </div>
+
+
+
+
+            <!-- buttons hidden until content arrives -->
+
+            <div id="output-actions" class="hidden">
+
+
+                <button
+                id="copy-btn"
+                class="btn btn-secondary">
+
+                    Copy
+
+                </button>
+
+
+                <button
+                id="download-btn"
+                class="btn btn-secondary">
+
+                    Download
+
+                </button>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- RAG Sources -->
+
+            <div id="rag-visualizer" class="hidden">
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <!-- Error -->
+
+        <div id="error-state" class="error-state hidden">
+
+
+            <h3>
+                Error
+            </h3>
+
+
+            <p id="error-message"></p>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

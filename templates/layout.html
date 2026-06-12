@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> AI Content Generator</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <span>Scribe<span class="accent-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+                        <i class="fa-solid fa-pen-nib"></i> Creator
+                    </a>
+                </li>
+                <li>
+                    <a href="/history" class="{% if request.path == '/history' %}active{% endif %}">
+                        <i class="fa-solid fa-clock-rotate-left"></i> History
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 ScribeAI. Powered by Groq, FAISS, and Sentence Transformers. Made by Bhimireddy Manasa.</p>
+        </footer>
+    </div>
+
+    <!-- Client-side script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
